@@ -24,7 +24,7 @@ async function getContactById(contactId) {
     const findContactById = dataParse.find(
       ({ id }) => id === contactId.toString()
     );
-    console.table(findContactById);
+    console.log(findContactById);
   } catch (error) {
     console.error(err.message);
   }
@@ -43,7 +43,10 @@ async function removeContact(contactId) {
     );
 
     await fs.writeFile(contactsPath, JSON.stringify(deletedContact), 'utf8');
-    console.log(`Number of contacts after deletion ${deletedContact.length}`);
+    console.log(
+      `Contact deleted successfully!!!
+      Number of contacts after deletion ${deletedContact.length}`
+    );
     console.table(deletedContact);
   } catch (error) {
     console.error(err.message);
@@ -67,7 +70,10 @@ async function addContact(name, email, phone) {
 
     await fs.writeFile(contactsPath, JSON.stringify(dataParse), 'utf8');
 
-    console.log(`Number of contacts after adding ${dataParse.length} `);
+    console.log(
+      `Contact successfully added!!!
+      Number of contacts after adding ${dataParse.length} `
+    );
     console.table(dataParse);
   } catch (error) {
     console.error(err.message);
