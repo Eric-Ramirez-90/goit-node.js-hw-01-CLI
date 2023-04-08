@@ -4,15 +4,13 @@ const { uid } = require('uid/secure');
 
 const contactsPath = path.resolve('./db/contacts.json');
 
-const newContacsPath = path.resolve('./db/newContacts.json');
-
 async function listContacts() {
   try {
     const data = await fs.readFile(contactsPath, 'utf8');
     const dataParse = JSON.parse(data);
     console.log(`Number of contacts ${dataParse.length}`);
     console.table(dataParse);
-  } catch (error) {
+  } catch (err) {
     console.error(err.message);
   }
 }
@@ -25,7 +23,7 @@ async function getContactById(contactId) {
       ({ id }) => id === contactId.toString()
     );
     console.log(findContactById);
-  } catch (error) {
+  } catch (err) {
     console.error(err.message);
   }
 }
@@ -48,7 +46,7 @@ async function removeContact(contactId) {
       Number of contacts after deletion ${deletedContact.length}`
     );
     console.table(deletedContact);
-  } catch (error) {
+  } catch (err) {
     console.error(err.message);
   }
 }
@@ -75,7 +73,7 @@ async function addContact(name, email, phone) {
       Number of contacts after adding ${dataParse.length} `
     );
     console.table(dataParse);
-  } catch (error) {
+  } catch (err) {
     console.error(err.message);
   }
 }
